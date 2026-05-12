@@ -1,3 +1,5 @@
+// wara ntem fridz eliezer
+
 // *1. on separe les interface Admin,Manger et client pour :
 // -Pourla securisation car meme ci les elements sont caches dans l'inferface, un utilisateur avec des connaissances techniques peut inspecter le code source, le modifier ou desactiver le CSS pour l'afficher des section non autoriser
 // -pour la comcentration si un client veut voir ses comptes et transactions rapident, pas un tableau de bord complexe avec des radios bancaires, un manager doit ce concentrer sur sa branche uniquement

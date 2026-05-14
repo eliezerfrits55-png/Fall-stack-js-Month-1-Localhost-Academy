@@ -10,9 +10,15 @@ const typeBadge = { savings:{ color:'#1A5FAB', bg:'#EBF2FB' }, current:{ color:'
 export default function AccountDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { accounts, transactions } = useBank();
+  const { accounts, transactions, isLoading } = useBank();
   const account = accounts.find(a => a.id === id);
   const acctTxns = transactions.filter(t => t.accountId === id);
+
+  if (isLoading) return (
+    <div style={{ padding:'40px', textAlign:'center', color:'var(--text-muted)' }}>
+      Loading account...
+    </div>
+  );
 
   if (!account) return (
     <div style={{ padding:'40px', textAlign:'center' }}>

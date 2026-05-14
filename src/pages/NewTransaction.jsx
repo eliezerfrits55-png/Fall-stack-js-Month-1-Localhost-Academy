@@ -28,6 +28,7 @@ export default function NewTransaction() {
     const amount = parseFloat(form.amount);
     if (!form.accountId) return setError('Please select an account.');
     if (!amount || amount <= 0) return setError('Enter a valid amount greater than 0.');
+    if (!selectedAccount) return setError('Selected account could not be found.');
 
     if (form.type === 'deposit') {
       deposit({ accountId:form.accountId, amount, description:form.description || 'Deposit' });

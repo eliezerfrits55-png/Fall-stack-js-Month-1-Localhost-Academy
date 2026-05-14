@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faRightToBracket, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../context/AuthContext';
 
 export default function LoginPage() {
   const { login } = useAuth();
-  const navigate = useNavigate();
   const [form, setForm] = useState({ email:'', password:'' });
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState('');
@@ -17,10 +16,9 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
     await new Promise(r => setTimeout(r, 600)); // simulate network
-    const ok = login(form.email, form.password);
+    const result = login(form.email, form.password);
     setLoading(false);
-    if (ok) navigate('/dashboard');
-    else setError('Invalid email or password. Try admin@localhost.ac / react123');
+    if (!result.success) setError('Invalid email or password. Try admin@localhost.ac / react123');
   };
 
   return (

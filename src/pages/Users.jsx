@@ -93,15 +93,14 @@ const Users = () => {
         });
       } else {
         const newId = generateUniqueId('USR', users.map(u => u.id));
-        const { password, ...userData } = formData;
+        const userData = formData;
         
         dispatch({
           type: ACTIONS.CREATE_USER,
           payload: { 
             id: newId, 
             ...userData,
-            // Dans une vraie app, le mot de passe serait hashé côté serveur
-            passwordHash: password // Simulation - à remplacer par un vrai hashage
+            password: formData.password
           }
         });
       }
@@ -347,7 +346,7 @@ const Users = () => {
                   <td>{user.email}</td>
                   <td>
                     <span className={`users-badge ${user.role || 'default'}`}>
-                      {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                      {(user.role || 'default').charAt(0).toUpperCase() + (user.role || 'default').slice(1)}
                     </span>
                   </td>
                   <td>{getBranchName(user.branchId)}</td>

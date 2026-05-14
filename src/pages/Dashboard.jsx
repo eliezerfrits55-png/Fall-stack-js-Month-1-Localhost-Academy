@@ -2,7 +2,6 @@ import { useBank } from '../context/BankContext';
 import { useAuth } from '../context/AuthContext';
 import StatCard from '../components/StatCard';
 import TransactionItem from '../components/TransactionItem';
-import PageHeader from '../components/PageHeader';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faUsers, faArrowTrendUp, faArrowTrendDown, faPlus, faArrowRight } from '@fortawesome/free-solid-svg-icons';

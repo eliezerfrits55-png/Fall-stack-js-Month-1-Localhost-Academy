@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShieldHalved, faChartLine, faUsers, faLock, faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faShieldHalved, faChartLine, faUsers, faLock, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const features = [
   { icon: faShieldHalved, title:'Secure & Trusted',      desc:'Bank-grade security protecting every member transaction.' },

@@ -4,7 +4,7 @@ import { useBank } from '../context/BankContext';
 import AccountCard from '../components/AccountCard';
 import PageHeader from '../components/PageHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faPlus, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function Accounts() {
   const { accounts } = useBank();
@@ -12,8 +12,11 @@ export default function Accounts() {
   const [filter, setFilter] = useState('all');
 
   const filtered = accounts.filter(a => {
-    const matchSearch = a.memberName.toLowerCase().includes(search.toLowerCase()) ||
-                        a.memberNumber.toLowerCase().includes(search.toLowerCase());
+    const memberName = a.memberName || '';
+    const memberNumber = a.memberNumber || '';
+    const normalizedSearch = search.toLowerCase();
+    const matchSearch = memberName.toLowerCase().includes(normalizedSearch) ||
+                        memberNumber.toLowerCase().includes(normalizedSearch);
     const matchFilter = filter === 'all' || a.status === filter || a.accountType === filter;
     return matchSearch && matchFilter;
   });
